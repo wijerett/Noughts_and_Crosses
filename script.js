@@ -6,14 +6,12 @@ function Gameboard() {
     [4, 5, 6],
     [7, 8, 9]
   ];
-
   for (let i = 0; i < rows; i++) {
     board[i] = [];
     for (let j = 0; j < columns; j++) {
       board[i].push(Cell());
     }
   }
-
   const getBoard = () => board;
   const placeMark = (column, row, player) => {
     if(board[row][column].getValue() === 0) {
@@ -23,13 +21,13 @@ function Gameboard() {
       return
     }
   };
-
   const printBoard = () => {
-    const boardValues = board.map((row) => row.map((cell) => cell.getValue()))
+  const boardValues = board.map((row) => row.map((cell) => cell.getValue()))
     console.log(boardValues);
   };
-  return { getBoard, placeMark, printBoard };
-}
+    return { getBoard, placeMark, printBoard };
+};
+
 
 function Cell() {
   let value = 0
@@ -41,16 +39,13 @@ function Cell() {
     addMark,
     getValue
   };
-}
-
-
+};
 
 function GameController(
   playerOne = "Player One",
   playerTwo = "Player Two"
 ) {
   const board = Gameboard();
-  const cell = Cell()
   const players = [
     {
       name: playerOne,
@@ -65,39 +60,25 @@ function GameController(
   const switchPlayer = () => {
     activePlayer = activePlayer === players[0] ? players[1] : players[0];
   };
-
   const getActivePlayer = () => activePlayer;
   const printNewRound = () => {
     board.printBoard();
     console.log(`${getActivePlayer().name}'s turn.`);
   };
-  const playRound = (column, row) => {
-    if (board.getBoard()[row][column].getValue() === 0) {
-      board.placeMark(column, row, getActivePlayer().mark);
-      console.log(`Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`);
-      switchPlayer();
-    } else {
-      console.log("Choose again!");
-    }
-
-  function winCondition () {
+    function winCondition () {
     const b = board.getBoard().map(row => row.map(cell => cell.getValue()));
-
     for (let i = 0; i < 3; i++) {
       if (b[i][0] !== 0 && b[i][0] === b[i][1] && b[i][1] === b[i][2]) {
         console.log(`${b[i][0]} wins!`);
         return true;
       }
     }
-
-      // Check columns
     for (let i = 0; i < 3; i++) {
       if (b[0][i] !== 0 && b[0][i] === b[1][i] && b[1][i] === b[2][i]) {
         console.log(`${b[0][i]} wins!`);
         return true;
       }
     }
-    // Check diagonals
     if (b[0][0] !== 0 && b[0][0] === b[1][1] && b[1][1] === b[2][2]) {
       console.log(`${b[0][0]} wins!`);
       return true;
@@ -108,25 +89,41 @@ function GameController(
     }
     return false;
   }
+  const playRound = (column, row) => {
+    new Display.renderBoard;
+    if (board.getBoard()[row][column].getValue() === 0) {
+      board.placeMark(column, row, getActivePlayer().mark);
+      console.log(`Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`);
+      switchPlayer();
+    } else {
+      console.log("Choose again!");
+    }
 
-    //add logic to check for winner here
+  if (winCondition() === true) {
+    return;
+  } else {
     winCondition();
     printNewRound();
+  }
   };
   printNewRound();
   return {
     playRound, printNewRound
   };
-  
 }
 
 const game = GameController();
 window.playRound = game.playRound;
 
-const play = game.playRound;
-game.playRound(0,0);
-game.playRound(0,1);
-game.playRound(1,0);
-game.playRound(1,1);
-game.playRound(2,0);
+function Display(board, markers) {
+  this.board = board;
+  this.markers = markers;
+  this.displayBoard = function() {
+    const renderBoard = document.getElementById("playboard");
+    const fillBoard = document.
+    return renderBoard;
+  };
+}
 
+const board1 = new Display();
+board1.displayBoard();
