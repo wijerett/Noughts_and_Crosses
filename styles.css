@@ -1,22 +1,29 @@
-body {
+
+
+
+.playboard {
+  border: 2px solid black;
+  height: 700px;
+  width: 600px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
 }
 
-
-#playboard {
-  border: 2px solid black;
-  height: 640px;
-  width: 600px;
-  display: grid;
-  grid-row: repeat(3, 1fr);
-  grid-column: repeat(3 1fr);
+.tile-box {
   align-items: center;
+  width: 429px;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0;
   justify-content: center;
 }
 
-td {
-  margin: 30px;
+.tiles {
+  margin: 20px;
   border: 2px solid black;
-  height: 80px;
-  width: 90px;
+  height: 100px;
+  width: 100px;
 }
