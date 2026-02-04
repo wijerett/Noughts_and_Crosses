@@ -8,11 +8,18 @@
     <title>Document</title>
   </head>
   <body>
-
     <div class="playboard">
-      <h1 class="header">Tic-Tac-Toe</h1>
-      <h2>click on a box to make a move</h2>
-      <button id="reset">Reset</button>
+      <div class="headlines">
+        <h1 class="header">Tic-Tac-Toe</h1>
+        <h2>click on a box to make a move</h2>
+        <div class="buttons">
+          <button id="start">Start new game</button>
+          <button id="reset">Reset</button>
+          <input id="name" type="text"></input>
+        </div>
+        <p class="move-output" id="output"></p>
+        <p class="turn-update" id="turn-output"></p>
+      </div>
       <div class="tile-box">
           <div class="tiles" id="tile-1" data-row="0" data-col="0"></div>
           <div class="tiles" id="tile-2" data-row="0" data-col="1"></div>
@@ -25,8 +32,6 @@
           <div class="tiles" id="tile-9" data-row="2" data-col="2"></div>
       </div>
     </div>
-  
-
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,5 +1,10 @@
 
 
+body {
+  align-items: center;
+  
+}
+
 
 .playboard {
   border: 2px solid black;
@@ -29,3 +34,22 @@
   align-content: center;
   text-align: center;
 }
+
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+
+.move-output {
+  height: 20px;
+}
+
+.turn-update {
+  height: 20px;
+}
+
+#name {
+  width: 90px;
+}
+

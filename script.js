@@ -50,7 +50,6 @@ function GameController(
   playerOne = "Player One",
   playerTwo = "Player Two"
 ) {
-
   const board = Gameboard();
   const players = [
     {
@@ -73,10 +72,13 @@ function GameController(
     console.log(`${getActivePlayer().name}'s turn.`);
   };
     function winCondition () {
+    
     const b = board.getBoard().map(row => row.map(cell => cell.getValue()));
     for (let i = 0; i < 3; i++) {
       if (b[i][0] !== 0 && b[i][0] === b[i][1] && b[i][1] === b[i][2]) {
-        console.log(`${getActivePlayer().name} wins!`);
+        document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
+        document.querySelector("#turn-output").textContent = "";
+        //console.log(`${getActivePlayer().name} wins!`);
         board.printBoard()
         gameOver = true;
         return true;
@@ -84,20 +86,26 @@ function GameController(
     }
     for (let i = 0; i < 3; i++) {
       if (b[0][i] !== 0 && b[0][i] === b[1][i] && b[1][i] === b[2][i]) {
-        console.log(`${getActivePlayer().name} wins!`);
+        document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
+        document.querySelector("#turn-output").textContent = "";
+        //console.log(`${getActivePlayer().name} wins!`);
         board.printBoard()
         gameOver = true;
         return true;
       }
     }
     if (b[0][0] !== 0 && b[0][0] === b[1][1] && b[1][1] === b[2][2]) {
-      console.log(`${getActivePlayer().name} wins!`);
+      document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
+      document.querySelector("#turn-output").textContent = "";
+      //console.log(`${getActivePlayer().name} wins!`);
       board.printBoard()
       gameOver = true;
       return true;
     }
     if (b[0][2] !== 0 && b[0][2] === b[1][1] && b[1][1] === b[2][0]) {
-      console.log(`${getActivePlayer().name} wins!`);
+      document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
+      document.querySelector("#turn-output").textContent = "";
+      //console.log(`${getActivePlayer().name} wins!`);
       board.printBoard()
       gameOver = true;
       return true;
@@ -110,6 +118,7 @@ function GameController(
     for (let row of boardArr) {
       for (let cell of row) {
         cell.addMark(0);
+        document.querySelector("#output").textContent = "";
       }
     }
     gameOver = false;
@@ -127,26 +136,46 @@ function GameController(
   };
 
   const playRound = (column, row) => {
+
     if (gameOver === false) {
-     
+      
       Display();
       if (board.getBoard()[row][column].getValue() === 0) {
         board.placeMark(column, row, getActivePlayer().mark);
-        console.log(`Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`);
-        Display();
-      } else {
+        document.querySelector("#output").textContent = `Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`;
         
-        console.log(`Choose again! cannot place ${getActivePlayer().name}'s mark at ${column} row ${row} `);
-      }
-
-      if (winCondition() === false) {
-        switchPlayer();
-        printNewRound();
-      } else {
-      return;
-      }
+        //console.log(`Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`);
+        Display();
+        if (!winCondition()) {
+          switchPlayer();
+          document.querySelector("#turn-output").textContent = `${getActivePlayer().name}'s turn`;
+          printNewRound();
+        }
+        return;
+      } else if (board.getBoard()[row][column].getValue() !== 0){
+        document.querySelector("#output").textContent = `Choose again! cannot place ${getActivePlayer().name}'s mark at ${column} row ${row} `;
+        return;
+        //console.log(`Choose again! cannot place ${getActivePlayer().name}'s mark at ${column} row ${row} `);
+        //console.log(`${getActivePlayer().name}'s turn`)
+      } else if (winCondition === true) {
+        getActivePlayer().name = playerOne;
+        document.querySelector("#turn-output").textContent = "";
+        return;
+      };
+      
     };
+    
   };
+
+  const start = document.querySelector("#start");
+  start.addEventListener('click', () => {
+    document.querySelector("#output").textContent = "";
+    getActivePlayer().name = playerOne;
+    document.querySelector("#turn-output").textContent = "";
+    document.querySelector("#turn-output").textContent = `${getActivePlayer().name}'s turn`
+  });
+
+
   return { playRound, printNewRound, Display, resetBoard };
 };
 
@@ -169,3 +198,4 @@ const resetButton = document.querySelector("#reset")
 resetButton.addEventListener('click', () => {
   game.resetBoard();
 });
+
