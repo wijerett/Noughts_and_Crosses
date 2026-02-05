@@ -27,7 +27,7 @@ function Gameboard() {
 
 
 function Cell() {
-  let value = 0
+  let value = 0;
   const addMark = (player) => {
     value = player;
   };
@@ -118,6 +118,7 @@ function GameController(
     for (let row of boardArr) {
       for (let cell of row) {
         cell.addMark(0);
+        activePlayer = players[0];
         document.querySelector("#output").textContent = "";
       }
     }
@@ -131,22 +132,31 @@ function GameController(
       const tile = document.querySelector(`#tile-${i+1}`);
       if (tile) {
         tile.textContent = viewBoard[i] === 0 ? "" : viewBoard[i];
-      }
-    }
+      };
+    };
   };
 
+  function draw() {
+    const tileValue = board.getBoard().flat().map(cell => cell.getValue());
+    if (tileValue.every(val => val !== 0) && !winCondition()) {
+      document.querySelector("#output").textContent = "It's a draw!";
+      document.querySelector("#turn-output").textContent = "";
+      gameOver = true;
+      activePlayer = players[0];
+      return true;
+    }
+    return false;
+  };
   const playRound = (column, row) => {
-
     if (gameOver === false) {
-      
       Display();
+      
       if (board.getBoard()[row][column].getValue() === 0) {
         board.placeMark(column, row, getActivePlayer().mark);
         document.querySelector("#output").textContent = `Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`;
-        
-        //console.log(`Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`);
+        draw();
         Display();
-        if (!winCondition()) {
+        if (!winCondition() && !draw()) {
           switchPlayer();
           document.querySelector("#turn-output").textContent = `${getActivePlayer().name}'s turn`;
           printNewRound();
@@ -159,20 +169,23 @@ function GameController(
         //console.log(`${getActivePlayer().name}'s turn`)
       } else if (winCondition === true) {
         getActivePlayer().name = playerOne;
+        getActivePlayer().mark = "X";
         document.querySelector("#turn-output").textContent = "";
         return;
+      } else {
+        document.querySelector("#turn-output").textContent = "";
       };
-      
     };
-    
   };
 
   const start = document.querySelector("#start");
   start.addEventListener('click', () => {
     document.querySelector("#output").textContent = "";
-    getActivePlayer().name = playerOne;
+    activePlayer = players[0];
+    board.printBoard();
     document.querySelector("#turn-output").textContent = "";
     document.querySelector("#turn-output").textContent = `${getActivePlayer().name}'s turn`
+    game.resetBoard();
   });
 
 
