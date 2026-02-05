@@ -71,7 +71,29 @@ function GameController(
     winCondition();
     console.log(`${getActivePlayer().name}'s turn.`);
   };
-    function winCondition () {
+
+  const nameOne = document.querySelector("#submit-1");
+  let name1;
+  nameOne.addEventListener('click', () => {
+    name1 = document.getElementById("name-1").value;
+    players[0].name = name1;
+    document.getElementById("turn-output").textContent = `Hello ${name1}`
+    document.getElementById("name-1").value = "";
+    console.log(name1);
+});
+
+  const nameTwo = document.querySelector("#submit-2");
+  let name2;
+  nameTwo.addEventListener('click', () => {
+    name2 = document.getElementById("name-2").value;
+    players[1].name = name2;
+    document.getElementById("turn-output").textContent = `Hello ${name2}`
+    document.getElementById("name-2").value = "";
+    console.log(name2);
+});
+
+
+  function winCondition () {
     
     const b = board.getBoard().map(row => row.map(cell => cell.getValue()));
     for (let i = 0; i < 3; i++) {
@@ -186,14 +208,12 @@ function GameController(
     document.querySelector("#turn-output").textContent = "";
     document.querySelector("#turn-output").textContent = `${getActivePlayer().name}'s turn`
     game.resetBoard();
+    players[0].name = "Player One";
+    players[1].name = "Player Two";
+    document.getElementById("turn-output").textContent = "Enter player names!"
   });
-
-
-  return { playRound, printNewRound, Display, resetBoard };
+  return { playRound, printNewRound, Display, resetBoard, getActivePlayer };
 };
-
-
-
 const clickMark = (event) => {
   const tile = event.target;
   const row = parseInt(tile.dataset.row, 10);
@@ -211,4 +231,5 @@ const resetButton = document.querySelector("#reset")
 resetButton.addEventListener('click', () => {
   game.resetBoard();
 });
+
 

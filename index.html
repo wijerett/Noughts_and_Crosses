@@ -11,13 +11,12 @@
     <div class="playboard">
       <div class="headlines">
         <h1 class="header">Tic-Tac-Toe</h1>
-        <h2>click on a box to make a move</h2>
+        <h2 class="instructions">Click on a box to make a move</h2>
         <div class="buttons">
           <button id="start">Start new game</button>
           <button id="reset">Reset</button>
         </div>
-          <label for="name">Enter your name:</label>
-          <input name="name" id="name" type="text">
+
         <p class="move-output" id="output"></p>
         <p class="turn-update" id="turn-output"></p>
       </div>
@@ -32,6 +31,15 @@
           <div class="tiles" id="tile-8" data-row="2" data-col="1"></div>
           <div class="tiles" id="tile-9" data-row="2" data-col="2"></div>
       </div>
+    </div>
+    <div class="names" id="names">
+      <button id="submit-1">Submit</button>
+      <label for="name-1">Player One:</label>
+      <input name="name-1" id="name-1" type="text">
+      <button id="submit-2">Submit</button>
+      <label for="name-2">Player Two:</label>
+      <input name="name-2" id="name-2" type="text">
+      <p></p>
     </div>
     <script src="script.js"></script>
   </body>

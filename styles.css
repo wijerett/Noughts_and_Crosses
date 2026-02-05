@@ -2,18 +2,37 @@
 
 body {
   background-color: #ffebcd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .headlines {
   height: 300px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.header {
+  height: 10px;
+  align-self: center;
+  width: 500px;
+  text-align: center;
+}
+
+.instructions {
+  height: 15px;
+  width: 500px;
+  text-align: center;
 }
 
 .playboard {
+  background-color: aliceblue;
   border: 7px solid black;
-
   height: 800px;
-  width: 700px;
-  padding-bottom: 20px;
+  width: 500px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,18 +61,45 @@ body {
   display: grid;
   grid-auto-flow: column;
   justify-content: space-around;
+  align-items: center;
 }
 
 .move-output {
   height: 10px;
+  text-align: center;
 }
 
 .turn-update {
   height: 10px;
+  text-align: center;
 }
 
-#name {
+label {
+  text-align: center;
+  
+}
+
+#name-1, #name-2 {
   width: 90px;
   margin: 10px;
 }
 
+#submit-1, #submit-2 {
+  height: 25px;
+  margin: 7px;
+  border-radius: 20px;
+}
+
+.names {
+  margin: 12px;
+  height: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+}
+
+#start, #reset {
+  height: 30px;
+  border-radius: 20px;
+}
