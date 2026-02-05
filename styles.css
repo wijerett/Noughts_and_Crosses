@@ -1,19 +1,21 @@
 
 
 body {
-  align-items: center;
-  
+  background-color: #ffebcd;
 }
 
+.headlines {
+  height: 300px;
+}
 
 .playboard {
-  border: 2px solid black;
-  height: 700px;
-  width: 600px;
+  border: 7px solid black;
+
+  height: 800px;
+  width: 700px;
   padding-bottom: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
 }
 
@@ -24,10 +26,11 @@ body {
   flex-wrap: wrap;
   flex: 0;
   justify-content: center;
+  margin: 30px;
 }
 
 .tiles {
-  margin: 20px;
+  margin: 15px;
   border: 2px solid black;
   height: 100px;
   width: 100px;
@@ -38,18 +41,19 @@ body {
 .buttons {
   display: grid;
   grid-auto-flow: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .move-output {
-  height: 20px;
+  height: 10px;
 }
 
 .turn-update {
-  height: 20px;
+  height: 10px;
 }
 
 #name {
   width: 90px;
+  margin: 10px;
 }
 
