@@ -81,7 +81,6 @@ function GameController(
     document.getElementById("name-1").value = "";
     console.log(name1);
 });
-
   const nameTwo = document.querySelector("#submit-2");
   let name2;
   nameTwo.addEventListener('click', () => {
@@ -100,7 +99,6 @@ function GameController(
       if (b[i][0] !== 0 && b[i][0] === b[i][1] && b[i][1] === b[i][2]) {
         document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
         document.querySelector("#turn-output").textContent = "";
-        //console.log(`${getActivePlayer().name} wins!`);
         board.printBoard()
         gameOver = true;
         return true;
@@ -110,7 +108,6 @@ function GameController(
       if (b[0][i] !== 0 && b[0][i] === b[1][i] && b[1][i] === b[2][i]) {
         document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
         document.querySelector("#turn-output").textContent = "";
-        //console.log(`${getActivePlayer().name} wins!`);
         board.printBoard()
         gameOver = true;
         return true;
@@ -119,7 +116,6 @@ function GameController(
     if (b[0][0] !== 0 && b[0][0] === b[1][1] && b[1][1] === b[2][2]) {
       document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
       document.querySelector("#turn-output").textContent = "";
-      //console.log(`${getActivePlayer().name} wins!`);
       board.printBoard()
       gameOver = true;
       return true;
@@ -127,13 +123,12 @@ function GameController(
     if (b[0][2] !== 0 && b[0][2] === b[1][1] && b[1][1] === b[2][0]) {
       document.querySelector("#output").textContent = `${getActivePlayer().name} wins!`;
       document.querySelector("#turn-output").textContent = "";
-      //console.log(`${getActivePlayer().name} wins!`);
       board.printBoard()
       gameOver = true;
       return true;
     }
     return false;
-  }
+  };
 
   function resetBoard() {
     const boardArr = board.getBoard();
@@ -143,6 +138,7 @@ function GameController(
         activePlayer = players[0];
         document.querySelector("#output").textContent = "";
         document.querySelector("#turn-output").textContent = "";
+        document.getElementById("turn-output").textContent = "Enter player names!";
       }
     }
     gameOver = false;
@@ -171,9 +167,9 @@ function GameController(
     return false;
   };
   const playRound = (column, row) => {
+    
     if (gameOver === false) {
       Display();
-      
       if (board.getBoard()[row][column].getValue() === 0) {
         board.placeMark(column, row, getActivePlayer().mark);
         document.querySelector("#output").textContent = `Placing ${getActivePlayer().name}'s mark to column ${column} row ${row}.`;
@@ -224,7 +220,6 @@ const clickMark = (event) => {
 const game = GameController();
 window.playRound = game.playRound;
 
-
 const tiles = document.querySelectorAll(".tiles");
 tiles.forEach(element => element.addEventListener('click', clickMark));
 
@@ -232,5 +227,4 @@ const resetButton = document.querySelector("#reset")
 resetButton.addEventListener('click', () => {
   game.resetBoard();
 });
-
 

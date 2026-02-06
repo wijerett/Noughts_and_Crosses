@@ -9,20 +9,19 @@ body {
 }
 
 .headlines {
+  width: 100%;
+  min-width: 0;
   height: 300px;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
 }
 
-.header {
+.header, .instructions {
+  width: 100%;
+  font-size: 1.2rem;
+  word-break: break-word;
   height: 10px;
   align-self: center;
-  width: 500px;
-  text-align: center;
-}
-
-.instructions {
-  height: 15px;
   width: 500px;
   text-align: center;
 }
@@ -30,15 +29,18 @@ body {
 .playboard {
   background-color: aliceblue;
   border: 7px solid black;
-  height: 800px;
-  width: 500px;
-  
+  width: 95vw;
+  max-width: 500px;
+  min-width: 250px;
+  padding-bottom: 20px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .tile-box {
+  width: 100%;
   align-items: center;
   width: 429px;
   display: flex;
@@ -49,10 +51,17 @@ body {
 }
 
 .tiles {
+  width: 28vw;
+  max-width: 100px;
+  min-width: 60px;
   margin: 15px;
   border: 2px solid black;
-  height: 100px;
-  width: 100px;
+  height: 28vw;
+  max-height: 100px;
+  min-height: 60px;
+  font-size: 2rem;
+  margin: 1vw;
+  display: flex;
   align-content: center;
   text-align: center;
 }
@@ -64,14 +73,11 @@ body {
   align-items: center;
 }
 
-.move-output {
+.move-output, .turn-update {
   height: 10px;
   text-align: center;
-}
-
-.turn-update {
-  height: 10px;
-  text-align: center;
+  font-size: 1rem;
+  word-break: break-word;
 }
 
 label {
@@ -97,9 +103,32 @@ label {
   grid-template-columns: repeat(3, 2fr);
   grid-template-rows: repeat(2, 1fr);
   align-items: center;
+  gap: 8px;
+  margin: 12px;
 }
 
 #start, #reset {
   height: 30px;
   border-radius: 20px;
+}
+
+.names label, .names input, .names button {
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .playboard {
+    border-width: 3px;
+    padding-bottom: 10px;
+  }
+  .tiles {
+    font-size: 1.2rem;
+    margin: 1vw;
+  }
+  .header, .instructions {
+    font-size: 1rem;
+  }
+  .names label, .names input, .names button {
+    font-size: 0.9rem;
+  }
 }
