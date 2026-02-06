@@ -142,6 +142,7 @@ function GameController(
         cell.addMark(0);
         activePlayer = players[0];
         document.querySelector("#output").textContent = "";
+        document.querySelector("#turn-output").textContent = "";
       }
     }
     gameOver = false;
