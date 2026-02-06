@@ -8,19 +8,20 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="playboard">
-      <div class="headlines">
-        <h1 class="header">Tic-Tac-Toe</h1>
-        <h2 class="instructions">Click on a box to make a move</h2>
-        <div class="buttons">
-          <button id="start">Start new game</button>
-          <button id="reset">Reset</button>
-        </div>
+    <div class="main-container">
+      <div class="playboard">
+        <div class="headlines">
+          <h1 class="header">Tic-Tac-Toe</h1>
+          <h2 class="instructions">Click on a box to make a move</h2>
+          <div class="buttons">
+            <button id="start">Start new game</button>
+            <button id="reset">Reset</button>
+          </div>
 
-        <p class="move-output" id="output"></p>
-        <p class="turn-update" id="turn-output">Enter player names!</p>
-      </div>
-      <div class="tile-box">
+          <p class="move-output" id="output"></p>
+          <p class="turn-update" id="turn-output">Enter player names!</p>
+        </div>
+        <div class="tile-box">
           <div class="tiles" id="tile-1" data-row="0" data-col="0"></div>
           <div class="tiles" id="tile-2" data-row="0" data-col="1"></div>
           <div class="tiles" id="tile-3" data-row="0" data-col="2"></div>
@@ -30,16 +31,17 @@
           <div class="tiles" id="tile-7" data-row="2" data-col="0"></div>
           <div class="tiles" id="tile-8" data-row="2" data-col="1"></div>
           <div class="tiles" id="tile-9" data-row="2" data-col="2"></div>
+        </div>
       </div>
-    </div>
-    <div class="names" id="names">
-      <button id="submit-1">Submit</button>
-      <label for="name-1">Player One:</label>
-      <input name="name-1" id="name-1" type="text">
-      <button id="submit-2">Submit</button>
-      <label for="name-2">Player Two:</label>
-      <input name="name-2" id="name-2" type="text">
-      <p></p>
+      <div class="names" id="names">
+        <button id="submit-1">Submit</button>
+        <label for="name-1">Player One:</label>
+        <input name="name-1" id="name-1" type="text">
+        <button id="submit-2">Submit</button>
+        <label for="name-2">Player Two:</label>
+        <input name="name-2" id="name-2" type="text">
+      
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

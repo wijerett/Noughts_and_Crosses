@@ -8,6 +8,15 @@ body {
   min-height: 100vh;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
 .headlines {
   width: 100%;
   min-width: 0;
@@ -105,7 +114,6 @@ label {
   grid-template-rows: repeat(2, 1fr);
   align-items: center;
   gap: 8px;
-  margin: 12px;
 }
 
 #start, #reset {
