@@ -6,6 +6,9 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .main-container {
@@ -13,13 +16,15 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 900px;
+  min-height: 95vh;
+  gap: 20px;
 }
 
 .headlines {
   width: 100%;
-  min-width: 0;
+  font-size: 1.2rem;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -39,14 +44,15 @@ body {
 .playboard {
   background-color: aliceblue;
   border: 7px solid black;
-  width: 95vw;
+  width: 100%;
   max-width: 500px;
-  min-width: 200px;
+  margin: 0 auto;
   padding-bottom: 20px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .tile-box {
@@ -59,12 +65,12 @@ body {
 }
 
 .tiles {
-  width: 28vw;
+  width: 25vw;
   max-width: 100px;
   min-width: 60px;
-  margin: 30px;
+  margin: 2vw;
   border: 2px solid black;
-  height: 28vw;
+  height: 25vw;
   max-height: 100px;
   min-height: 60px;
   font-size: 2rem;
@@ -72,6 +78,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 }
 
 .buttons {
@@ -91,7 +98,6 @@ body {
 
 label {
   text-align: center;
-  
 }
 
 #name-1, #name-2 {
@@ -126,22 +132,38 @@ label {
 }
 
 @media (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+  .main-container {
+    flex-direction: column;
+    max-width: 500px;
+    gap: 10px;
+  }
   .playboard {
     border-width: 3px;
     padding-bottom: 10px;
   }
   .tiles {
-    font-size: 1.2rem;
-    margin: 1vw;
+    font-size: 1.5rem;
+    margin: 1.5vw;
   }
   .header, .instructions {
     font-size: 1rem;
   }
   .names label, .names input, .names button {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   .tile-box {
     width: 100%;
     margin: 0;
+    gap: 0;
+  }
+  #name-1, #name-2 {
+    width: 70px;
+    margin: 5px;
+  }
+  #submit-1, #submit-2 {
+    margin: 5px;
   }
 }
