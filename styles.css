@@ -21,7 +21,8 @@ body {
   width: 100%;
   min-width: 0;
   height: 300px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-template-rows: repeat(5, 1fr);
 }
 
@@ -40,7 +41,7 @@ body {
   border: 7px solid black;
   width: 95vw;
   max-width: 500px;
-  min-width: 250px;
+  min-width: 450px;
   padding-bottom: 20px;
   height: auto;
   display: flex;
@@ -51,25 +52,22 @@ body {
 .tile-box {
   width: 100%;
   align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex: 0;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
 }
 
 .tiles {
   width: 28vw;
   max-width: 100px;
   min-width: 60px;
-  margin: 15px;
+  margin: 30px;
   border: 2px solid black;
   height: 28vw;
   max-height: 100px;
   min-height: 60px;
   font-size: 2rem;
-  margin: 1vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +79,7 @@ body {
   grid-auto-flow: column;
   justify-content: space-around;
   align-items: center;
+  height: 50px;
 }
 
 .move-output, .turn-update {
@@ -113,6 +112,7 @@ label {
   grid-template-columns: repeat(3, 2fr);
   grid-template-rows: repeat(2, 1fr);
   align-items: center;
+  text-align: center;
   gap: 8px;
 }
 
