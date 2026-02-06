@@ -42,12 +42,12 @@ body {
 .tile-box {
   width: 100%;
   align-items: center;
-  width: 429px;
   display: flex;
   flex-wrap: wrap;
   flex: 0;
   justify-content: center;
-  margin: 30px;
+  align-items: center;
+  margin: 0;
 }
 
 .tiles {
@@ -62,7 +62,8 @@ body {
   font-size: 2rem;
   margin: 1vw;
   display: flex;
-  align-content: center;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -130,5 +131,9 @@ label {
   }
   .names label, .names input, .names button {
     font-size: 0.9rem;
+  }
+  .tile-box {
+    width: 100%;
+    margin: 0;
   }
 }
