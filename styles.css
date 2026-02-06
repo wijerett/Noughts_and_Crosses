@@ -41,7 +41,7 @@ body {
   border: 7px solid black;
   width: 95vw;
   max-width: 500px;
-  min-width: 450px;
+  min-width: 200px;
   padding-bottom: 20px;
   height: auto;
   display: flex;
